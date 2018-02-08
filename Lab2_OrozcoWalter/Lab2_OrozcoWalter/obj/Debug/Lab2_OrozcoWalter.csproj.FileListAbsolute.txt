@@ -1,0 +1,6 @@
+c:\users\t204\documents\visual studio 2013\Projects\Lab2_OrozcoWalter\Lab2_OrozcoWalter\bin\Debug\Lab2_OrozcoWalter.exe.config
+c:\users\t204\documents\visual studio 2013\Projects\Lab2_OrozcoWalter\Lab2_OrozcoWalter\obj\Debug\Lab2_OrozcoWalter.csprojResolveAssemblyReference.cache
+c:\users\t204\documents\visual studio 2013\Projects\Lab2_OrozcoWalter\Lab2_OrozcoWalter\bin\Debug\Lab2_OrozcoWalter.exe
+c:\users\t204\documents\visual studio 2013\Projects\Lab2_OrozcoWalter\Lab2_OrozcoWalter\bin\Debug\Lab2_OrozcoWalter.pdb
+c:\users\t204\documents\visual studio 2013\Projects\Lab2_OrozcoWalter\Lab2_OrozcoWalter\obj\Debug\Lab2_OrozcoWalter.exe
+c:\users\t204\documents\visual studio 2013\Projects\Lab2_OrozcoWalter\Lab2_OrozcoWalter\obj\Debug\Lab2_OrozcoWalter.pdb
