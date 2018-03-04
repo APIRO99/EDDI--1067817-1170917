@@ -143,6 +143,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StringTreeController.cs" />
     <Compile Include="Controllers\TreeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -188,10 +189,11 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Tree\Index.cshtml" />
-    <Content Include="Views\Tree\StringTree.cshtml" />
     <Content Include="Views\Tree\IntTree.cshtml" />
     <Content Include="Views\Tree\PaisTree.cshtml" />
     <Content Include="Views\Tree\AddNode.cshtml" />
+    <Content Include="Views\StringTree\NewStringNode.cshtml" />
+    <Content Include="Views\StringTree\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

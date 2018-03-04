@@ -83,7 +83,7 @@ namespace Lab02.Controllers
         {
             try
             {
-                if ()
+                //  if ()
 
                 return RedirectToAction("Index");
             }

@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>StringTree</h2>
+<textarea>@TempData["Tree"]</textarea>
+
+<button type="button" onclick="location.href ='@Url.Action("NewStringNode", "StringTree")'">Add Node</button>
+<button type="button" onclick="location.href ='@Url.Action("DeleteNode", "StringTree")'">Delete Node</button>
+
+<h5>Arbol Degenerado: @TempData["EsDegenerado"]</h5>
+<h5>Arbol Balanceado: @TempData["EsLleno"]</h5>
