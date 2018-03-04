@@ -5,3 +5,9 @@
 }
 
 <h2>PaisTree</h2>
+<textarea>@TempData["Tree"]</textarea>
+
+<h5>Arbol Degenerado: @TempData["EsDegenerado"]</h5>
+<h5>Arbol Balanceado: @TempData["EsLleno"]</h5>
+
+<button type="button" onclick="location.href ='@Url.Action("AddNode", "Tree")'">AddNode</button>

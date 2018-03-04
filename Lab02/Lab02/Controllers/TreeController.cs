@@ -10,48 +10,58 @@ namespace Lab02.Controllers
 {
     public class TreeController : Controller
     {
+        Tree<string> TreeObjString;
+        Tree<int> TreeObjInt;
+        Tree<Pais> TreeObjPais;
+
         // GET: Tree
         public ActionResult Index()
         {
             return View();
         }
 
-
-        // GET: Tree/StringTree
+        // GET: Tree/PaisTree
         public ActionResult PaisTree()
         {
-            var path = @"C:\Users\apiro\OneDrive\Trabajos\trabajos de word\URL\2018\Ciclo III\Estructuras de datos\Lab\dataPaises.json";
+            var path = @"C:\dataPaises.json";
             var contenido = System.IO.File.ReadAllText(path);
-            var arbol = JsonConvert.DeserializeObject<Tree<Pais>>(contenido);
+            TreeObjPais = JsonConvert.DeserializeObject<Tree<Pais>>(contenido);
 
-            var cadena = JsonConvert.SerializeObject(arbol);
+            var cadena = JsonConvert.SerializeObject(TreeObjPais);
             TempData["Tree"] = cadena;//Esto es como una variable para poder imprimir en la vista
+
+            TempData["EsDegenerado"] = TreeObjPais.EsDegenerado(TreeObjPais);
+            TempData["EsLleno"] = TreeObjPais.EsLleno(TreeObjPais);
             return View();
         }
-
 
         // GET: Tree/StringTree
         public ActionResult StringTree()
         {
-            var path = @"C:\Users\apiro\OneDrive\Trabajos\trabajos de word\URL\2018\Ciclo III\Estructuras de datos\Lab\dataPaises.json";
+            var path = @"C:\dataString.json";
             var contenido = System.IO.File.ReadAllText(path);
-            var arbol = JsonConvert.DeserializeObject<Tree<string>>(contenido);
+            TreeObjString = JsonConvert.DeserializeObject<Tree<string>>(contenido);
 
-            var cadena = JsonConvert.SerializeObject(arbol);
+            var cadena = JsonConvert.SerializeObject(TreeObjString);
             TempData["Tree"] = cadena;//Esto es como una variable para poder imprimir en la vista
+
+            TempData["EsDegenerado"] = TreeObjString.EsDegenerado(TreeObjString);
+            TempData["EsLleno"] = TreeObjString.EsLleno(TreeObjString);
             return View();
         }
 
-
-        // GET: Tree/StringTree
+        // GET: Tree/IntTree
         public ActionResult IntTree()
         {
-            var path = @"C:\Users\apiro\OneDrive\Trabajos\trabajos de word\URL\2018\Ciclo III\Estructuras de datos\Lab\dataPaises.json";
+            var path = @"C:\dataInt.json";
             var contenido = System.IO.File.ReadAllText(path);
-            var arbol = JsonConvert.DeserializeObject<Tree<int>>(contenido);
+            TreeObjInt = JsonConvert.DeserializeObject<Tree<int>>(contenido);
 
-            var cadena = JsonConvert.SerializeObject(arbol);
+            var cadena = JsonConvert.SerializeObject(TreeObjInt);
             TempData["Tree"] = cadena;//Esto es como una variable para poder imprimir en la vista
+
+            TempData["EsDegenerado"] = TreeObjInt.EsDegenerado(TreeObjInt);
+            TempData["EsLleno"] = TreeObjInt.EsLleno(TreeObjInt);
             return View();
         }
 
@@ -61,19 +71,19 @@ namespace Lab02.Controllers
             return View();
         }
 
-        // GET: Tree/Create
-        public ActionResult Create()
+        // GET: Tree/AddNode
+        public ActionResult AddNode()
         {
             return View();
         }
 
-        // POST: Tree/Create
+        // POST: Tree/AddNode
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult AddNode(FormCollection collection)
         {
             try
             {
-                // TODO: Add insert logic here
+                if ()
 
                 return RedirectToAction("Index");
             }
