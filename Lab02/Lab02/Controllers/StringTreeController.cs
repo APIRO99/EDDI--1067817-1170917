@@ -12,6 +12,11 @@ namespace Lab02.Controllers
     {
         Tree<string> ObjTree;
 
+        protected void Submit(object sender, EventArgs e)
+        {
+            string name = Request.Form["Name"];
+        }
+
         // GET: StringTree
         public ActionResult Index()
         {
@@ -51,8 +56,7 @@ namespace Lab02.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
-
+                ObjTree.Insertar(this.Submit());
                 return RedirectToAction("Index");
             }
             catch

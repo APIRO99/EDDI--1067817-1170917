@@ -6,13 +6,12 @@
 
 <h2>NewStringNode</h2>
 
-
 @using (Html.BeginForm("Index", "StringTree"))
 {
     <form id="form1" runat="server">
-        NewString: 
-        <input type="text" id="newNode" runat="server" value="" />
+        Name:
+        <input type="text" id="txtName" name="Name" value="" />
         <br />
-        <asp:Button Text="Submit" runat="server" OnClick="Submit" />
+        <input type="submit"/>
     </form>
 }
