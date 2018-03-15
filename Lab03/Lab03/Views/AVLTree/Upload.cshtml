@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Upload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Upload</h2>
+
+@using ()
+
+
+@using (Html.BeginForm("Upload", "ArbolPais", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="FileUpload" />
+    <br />
+    <input type="submit" name="Submit" id="Submit" value="Upload" />
+    @Html.Label(TempData["uploadResult"].ToString())
+}

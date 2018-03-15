@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Lab03.Models
 {
-    public class AVLTree<T>
+    public class AVLTree <T>
     {
         private  class Node
         {
