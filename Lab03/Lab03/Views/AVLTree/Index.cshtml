@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2> ARBOL AVL </h2>
+
+<h4>CARGAR AARCHIVO </h4>
+
+@using (Html.BeginForm("Upload", "ArbolPais", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="FileUpload" />
+    <br />
+    <input type="submit" name="Submit" id="Submit" value="Upload" />
+//   @Html.Label(TempData["uploadResult"].ToString())
+}
