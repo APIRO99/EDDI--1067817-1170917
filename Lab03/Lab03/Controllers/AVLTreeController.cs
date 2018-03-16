@@ -1,5 +1,7 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
+using Lab03.Models;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +14,24 @@ namespace Lab03.Controllers
         // GET: AVLTree
         public ActionResult Index()
         {
+            var path = @"C:\Users\apiro\OneDrive\Trabajos\trabajos de word\URL\2018\Ciclo III\Estructuras de datos\Lab\dataPaises.json";
+            var contenido = System.IO.File.ReadAllText(path);
+            var arbol = JsonConvert.DeserializeObject<AVLTree<Match>>(contenido);
+
+            var cadena = JsonConvert.SerializeObject(arbol);
+            TempData["Arbol"] = cadena;//Esto es como una variable para poder imprimir en la vista
+
+            return View();
+        }//Ella lo programo en el controlador
+
+        public ActionResult Upload()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Upload(FormCollection collection)
+        {
             try
             {
                 if (Request.Files.Count > 0)
@@ -35,39 +55,15 @@ namespace Lab03.Controllers
             }
             return View("Index");
         }
+
+
+
+
 
         // GET: AVLTree/Details/5
         public ActionResult Details(int id)
         {
             return View();
-        }
-
-        // GET: AVLTree/Upload
-        //   [HttpPost]
-        public ActionResult Upload()
-        {
-            try
-            {
-                if (Request.Files.Count > 0)
-                {
-                    var file = Request.Files[0];
-
-                    if (file != null && file.ContentLength > 0)
-                    {
-                        var fileName = Path.GetFileName(file.FileName);
-                        var path = Path.Combine(Server.MapPath("~/App_Data/"), fileName);
-                        file.SaveAs(path);
-                        TempData["uploadResult"] = "Archivo subido con éxito";
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                TempData["uploadResult"] = "Error" + ex.Message;
-
-            }
-            return View("Index");
         }
 
         // GET: AVLTree/Create
