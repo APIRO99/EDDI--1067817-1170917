@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,9 +10,19 @@ namespace Lab_04.Controllers
 {
     public class DictionaryController : Controller
     {
+        Dictionary<string, JsonObjectAttribute> dictionary;
+        Dictionary<string, bool> Checking;
+
         // GET: Dictionary
         public ActionResult Index()
         {
+            return View();
+        }
+
+        //GET: Dictionary/Upload
+        public ActionResult Upload()
+        {
+            TempData["uploadResult"] = "";
             try
             {
                 if (Request.Files.Count > 0)
@@ -24,6 +35,10 @@ namespace Lab_04.Controllers
                         var path = Path.Combine(Server.MapPath("~/App_Data/"), fileName);
                         file.SaveAs(path);
                         TempData["uploadResult"] = "Archivo subido con éxito";
+
+                        var content = System.IO.File.ReadAllText(path);
+                        dictionary = JsonConvert.DeserializeObject<Dictionary<string, JsonObjectAttribute>>(content);
+
                     }
                 }
 
@@ -33,8 +48,43 @@ namespace Lab_04.Controllers
                 TempData["uploadResult"] = "Error" + ex.Message;
 
             }
-            return View("Index");
+            return View(/*"Index"*/);
         }
+
+
+        //GET: Dictionary/UploadC
+        public ActionResult UploadC()
+        {
+            TempData["uploadResult"] = "";
+            try
+            {
+                if (Request.Files.Count > 0)
+                {
+                    var file = Request.Files[0];
+
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        var fileName = Path.GetFileName(file.FileName);
+                        var path = Path.Combine(Server.MapPath("~/App_Data/"), fileName);
+                        file.SaveAs(path);
+                        TempData["uploadResult"] = "Archivo subido con éxito";
+
+                        var content = System.IO.File.ReadAllText(path);
+                        Checking = JsonConvert.DeserializeObject<Dictionary<string, bool>>(content);
+
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                TempData["uploadResult"] = "Error" + ex.Message;
+
+            }
+            return View(/*"Index"*/);
+        }
+
+
 
         // GET: Dictionary/Details/5
         public ActionResult Details(int id)
@@ -42,27 +92,6 @@ namespace Lab_04.Controllers
             return View();
         }
 
-        // GET: Dictionary/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Dictionary/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
         // GET: Dictionary/Edit/5
         public ActionResult Edit(int id)

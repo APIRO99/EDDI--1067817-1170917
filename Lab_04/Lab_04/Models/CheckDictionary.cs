@@ -5,9 +5,9 @@ using System.Web;
 
 namespace Lab_04.Models
 {
-    internal class Dictionary
+    public class CheckDictionary
     {
-        public string country;
-        public int[] stamps;
+        public string id;
+        public bool status;
     }
 }

@@ -4,14 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2> DICTIONARY </h2>
+<h2>Index</h2>
 
-<h4>CARGAR AARCHIVO </h4>
-
-@using (Html.BeginForm("Upload", "Dictionary", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    <input type="file" name="FileUpload"/>
-    <br />
-    <input type="submit" name="Submit" id="Submit" value="Upload" />
-    //   @Html.Label(TempData["uploadResult"].ToString())
-}
+<button type="button" onclick="location.href = '@Url.Action("Upload", "Dictionary")'">Upload Stamps Collection</button>
+<button type="button" onclick="location.href = '@Url.Action("UploadC", "Dictionary")'">Upload Stamps Checking</button>
