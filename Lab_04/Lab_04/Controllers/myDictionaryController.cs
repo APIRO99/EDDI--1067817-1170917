@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Lab_04.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,9 +9,9 @@ using System.Web.Mvc;
 
 namespace Lab_04.Controllers
 {
-    public class DictionaryController : Controller
+    public class myDictionaryController : Controller
     {
-        Dictionary<string, JsonObjectAttribute> dictionary;
+        Dictionary<string, myDictionary> dictionary;
         Dictionary<string, bool> Checking;
 
         // GET: Dictionary
@@ -37,8 +38,8 @@ namespace Lab_04.Controllers
                         TempData["uploadResult"] = "Archivo subido con éxito";
 
                         var content = System.IO.File.ReadAllText(path);
-                        dictionary = JsonConvert.DeserializeObject<Dictionary<string, JsonObjectAttribute>>(content);
-
+                        var  TempDic = JsonConvert.DeserializeObject<Dictionary<string, myDictionary>>(content);
+                        dictionary = TempDic;
                     }
                 }
 
@@ -82,7 +83,7 @@ namespace Lab_04.Controllers
 
             }
             return View(/*"Index"*/);
-        }
+        }//tested
 
 
 
@@ -137,4 +138,14 @@ namespace Lab_04.Controllers
             }
         }
     }
+
+    public class Pais
+    {
+        public Dictionary<string, JsonObjectAttribute> faltantes;
+        public Dictionary<string, JsonObjectAttribute> coleccionadas;
+        public Dictionary<string, JsonObjectAttribute> cambios;
+        //public List<int> coleccionadas;
+        //public List<int> cambios;
+
+    }  
 }

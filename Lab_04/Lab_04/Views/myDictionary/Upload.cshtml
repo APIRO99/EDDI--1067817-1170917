@@ -7,12 +7,12 @@
 
 <h4>CARGAR ARCHIVO </h4>
 
-@using (Html.BeginForm("Upload", "Dictionary", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Upload", "myDictionary", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <input type="file" name="FileUpload" />
     <br />
     <input type="submit" name="Submit" id="Submit" value="Upload" />
      @Html.Label(TempData["uploadResult"].ToString())
     <br />
-    <button type="button" onclick="location.href = '@Url.Action("Index", "Dictionary")'">Back</button>
+    <button type="button" onclick="location.href = '@Url.Action("Index", "myDictionary")'">Back</button>
 }

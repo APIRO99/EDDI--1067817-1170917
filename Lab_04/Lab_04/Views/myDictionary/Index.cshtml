@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<button type="button" onclick="location.href = '@Url.Action("Upload", "myDictionary")'">Upload Stamps Collection</button>
+<button type="button" onclick="location.href = '@Url.Action("UploadC", "myDictionary")'">Upload Stamps Checking</button>

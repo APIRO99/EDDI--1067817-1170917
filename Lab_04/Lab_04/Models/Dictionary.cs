@@ -5,9 +5,11 @@ using System.Web;
 
 namespace Lab_04.Models
 {
-    internal class Dictionary
+    internal class myDictionary
     {
         public string country;
-        public int[] stamps;
+        public int[] faltantes;
+        public int[] coleccionadas;
+        public int[] cambios;
     }
 }
