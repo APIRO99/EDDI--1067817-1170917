@@ -38,8 +38,7 @@ namespace Lab_04.Controllers
                         TempData["uploadResult"] = "Archivo subido con éxito";
 
                         var content = System.IO.File.ReadAllText(path);
-                        var  TempDic = JsonConvert.DeserializeObject<Dictionary<string, myDictionary>>(content);
-                        dictionary = TempDic;
+                        dictionary = JsonConvert.DeserializeObject<Dictionary<string, myDictionary>>(content);
                     }
                 }
 
@@ -50,7 +49,7 @@ namespace Lab_04.Controllers
 
             }
             return View(/*"Index"*/);
-        }
+        }//Tested
 
 
         //GET: Dictionary/UploadC
@@ -83,12 +82,12 @@ namespace Lab_04.Controllers
 
             }
             return View(/*"Index"*/);
-        }//tested
+        }//Tested
 
 
 
-        // GET: Dictionary/Details/5
-        public ActionResult Details(int id)
+        // GET: Dictionary/myDetails/5
+        public ActionResult myDetails(int id)
         {
             return View();
         }
