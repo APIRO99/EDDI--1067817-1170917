@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "IngresoArchivo";
+}
+
+<h2>IngresoArchivo</h2>
+
+
+<h5>El administrador podra cargar el archivo .Json donde estaran las opciones del catalogo para los usuarios.</h5>
+
+
+@using (Html.BeginForm("IngresoArchivo", "Tree", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="FileUpload" />
+    <br />
+    <input type="submit" name="Submit" id="Submit" value="Upload" />
+    @Html.Label(TempData["uploadResult"].ToString())
+    <br />
+    <div>
+        @Html.ActionLink("Back", "Admin")
+    </div>
+}
+
+
+
+

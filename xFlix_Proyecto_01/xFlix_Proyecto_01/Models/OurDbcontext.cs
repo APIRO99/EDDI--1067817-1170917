@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
 
-namespace PROYECTO_XFLIX01.Models
+namespace xFlix_Proyecto_01.Models
 {
-    public class OurDbContext : DbContext
+    public class OurDbcontext : DbContext
     {
         public DbSet<UserAccount> userAccount { get; set; }
     }

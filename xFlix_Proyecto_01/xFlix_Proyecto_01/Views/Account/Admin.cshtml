@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Admin";
+}
+
+
+
+@if (Session["UserID"] != null)
+{
+    <h2>Hola @Session["Username"].ToString()</h2>
+
+    <h5>Elija alguna opcion solo usted como administrador puede hacer ciertas funciones:</h5>
+}
+
+<button type="button" onclick="location.href = '@Url.Action("IngresoArchivo", "Tree")'">Cargar Archivo JSON</button>
+<br />
+<hr />
+<button type="button" onclick="location.href = '@Url.Action("IngresarManual", "Tree")'">Carga Manual</button>
+<br />
+<hr />
+<button type="button" onclick="location.href = '@Url.Action("EliminarAdmin", "Tree")'">Eliminar</button>
+<br />
+<hr />
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<div>
+    @Html.ActionLink("Sign off", "Login")
+</div>

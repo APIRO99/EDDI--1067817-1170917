@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // La información general sobre un ensamblado se controla mediante lo siguiente
 // conjunto de atributos. Cambie los valores de estos atributos para modificar la información
 // asociada con un ensamblado.
-[assembly: AssemblyTitle("PROYECTO_XFLIX01")]
+[assembly: AssemblyTitle("xFlix_Proyecto_01")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("HP Inc.")]
-[assembly: AssemblyProduct("PROYECTO_XFLIX01")]
+[assembly: AssemblyProduct("xFlix_Proyecto_01")]
 [assembly: AssemblyCopyright("Copyright © HP Inc. 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // El siguiente GUID sirve como ID de typelib si este proyecto se expone a COM
-[assembly: Guid("0c375eb3-994e-43d6-b429-ef7b8452ca69")]
+[assembly: Guid("11dd00b6-9014-45b2-9c93-1592baa27da1")]
 
 // La información de versión de un ensamblado consta de los siguientes cuatro valores:
 //

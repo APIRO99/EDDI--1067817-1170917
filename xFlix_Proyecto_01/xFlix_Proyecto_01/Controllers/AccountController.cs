@@ -3,21 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using PROYECTO_XFLIX01.Models;
+using xFlix_Proyecto_01.Models;
 
-namespace PROYECTO_XFLIX01.Controllers
+namespace xFlix_Proyecto_01.Controllers
 {
     public class AccountController : Controller
     {
         // GET: Account
         public ActionResult Index()
         {
-            using (OurDbContext db = new OurDbContext())
+            using (OurDbcontext db = new OurDbcontext())
             {
                 return View(db.userAccount.ToList());
             }
         }
-         public ActionResult Register()
+
+        public ActionResult Register()
         {
             return View();
         }
@@ -27,7 +28,7 @@ namespace PROYECTO_XFLIX01.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (OurDbContext db = new OurDbContext())
+                using (OurDbcontext db = new OurDbcontext())
                 {
                     db.userAccount.Add(account);
                     db.SaveChanges();
@@ -47,18 +48,24 @@ namespace PROYECTO_XFLIX01.Controllers
         [HttpPost]
         public ActionResult Login(UserAccount user)
         {
-            using (OurDbContext db = new OurDbContext())
+            using (OurDbcontext db = new OurDbcontext())
             {
-                var usr = db.userAccount.Where(u => u.UserName == u.UserName && u.Password == u.Password).FirstOrDefault();
-                if (usr != null)
+                var usr = db.userAccount.Where(u => u.Username == user.Username && u.Password == user.Password).FirstOrDefault();
+                if (usr != null && usr.Username != "admin")
                 {
-                    Session["userID"] = usr.UserID.ToString();
-                    Session["UserName"] = usr.UserName.ToString();
+                    Session["UserID"] = usr.UserID.ToString();
+                    Session["Username"] = usr.Username.ToString();
                     return RedirectToAction("LoggedIn");
+                }
+                else if ( usr.Username == "admin")
+                {
+                    Session["UserID"] = usr.UserID.ToString();
+                    Session["Username"] = usr.Username.ToString();
+                    return RedirectToAction("Admin");
                 }
                 else
                 {
-                    ModelState.AddModelError("","Username o Password is wrong.");
+                    ModelState.AddModelError("","UserName or Password is wrong.");
                 }
             }
             return View();
@@ -66,7 +73,7 @@ namespace PROYECTO_XFLIX01.Controllers
 
         public ActionResult LoggedIn()
         {
-            if (Session["UserId"] !=  null)
+            if (Session["Username"] != null)
             {
                 return View();
             }
@@ -75,5 +82,18 @@ namespace PROYECTO_XFLIX01.Controllers
                 return RedirectToAction("Login");
             }
         }
+
+        public ActionResult Admin()
+        {
+            if (Session["Username"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+        }
+
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace PROYECTO_XFLIX01
+namespace xFlix_Proyecto_01
 {
     public class BundleConfig
     {

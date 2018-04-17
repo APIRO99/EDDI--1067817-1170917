@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace PROYECTO_XFLIX01
+namespace xFlix_Proyecto_01
 {
     public class RouteConfig
     {

@@ -9,12 +9,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{55F7513C-9B8C-4A06-868F-0BA710338C9C}</ProjectGuid>
+    <ProjectGuid>{C088628F-75BE-4115-B75B-5345E40E3763}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PROYECTO_XFLIX01</RootNamespace>
-    <AssemblyName>PROYECTO_XFLIX01</AssemblyName>
+    <RootNamespace>xFlix_Proyecto_01</RootNamespace>
+    <AssemblyName>xFlix_Proyecto_01</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -130,10 +130,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TreeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\OurDbContext.cs" />
+    <Compile Include="Models\OurDbcontext.cs" />
     <Compile Include="Models\UserAccount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -176,6 +177,12 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\LoggedIn.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\Admin.cshtml" />
+    <Content Include="Views\Tree\IngresoArchivo.cshtml" />
+    <Content Include="Views\Tree\IngresoManual.cshtml" />
+    <Content Include="Views\Tree\EliminarAdmin.cshtml" />
+    <Content Include="Views\Tree\AgregarUsuario.cshtml" />
+    <Content Include="Views\Tree\EliminarUsuario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -204,9 +211,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>18526</DevelopmentServerPort>
+          <DevelopmentServerPort>6591</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:18526/</IISUrl>
+          <IISUrl>http://localhost:6591/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace PROYECTO_XFLIX01.Controllers
+namespace xFlix_Proyecto_01.Controllers
 {
     public class HomeController : Controller
     {

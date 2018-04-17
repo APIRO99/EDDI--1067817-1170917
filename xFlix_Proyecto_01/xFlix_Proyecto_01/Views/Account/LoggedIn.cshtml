@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "LoggedIn";
+}
+
+@if (Session["UserID"] != null)
+{
+    <h4>Hola @Session["Username"].ToString()</h4>
+
+    <h5>Usuario puede escoger cualquiera de las siguientes opciones para su WatchList:</h5>
+
+    <button type="button" onclick="location.href = '@Url.Action("AgregarUsuario", "Tree")'">Agregar a WatchList</button>
+    <br />
+    <hr />
+    <button type="button" onclick="location.href = '@Url.Action("EliminarUsuario", "Tree")'">Eliminar de WatchList</button>
+    <br />
+    <hr />
+
+}
+
+<div>
+    @Html.ActionLink("Sign off", "Login")
+</div>
