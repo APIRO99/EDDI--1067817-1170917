@@ -16,9 +16,13 @@
     <input type="submit" name="Submit" id="Submit" value="Upload" />
     @Html.Label(TempData["uploadResult"].ToString())
     <br />
-    <div>
-        @Html.ActionLink("Back", "Admin")
-    </div>
+
+
+
+
+    <button type="button" onclick="location.href = '@Url.Action("Admin", "Account")'">Back</button>
+    <br />
+    <hr />
 }
 
 

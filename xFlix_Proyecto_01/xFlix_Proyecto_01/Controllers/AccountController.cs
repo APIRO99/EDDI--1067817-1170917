@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -14,10 +16,14 @@ namespace xFlix_Proyecto_01.Controllers
         {
             using (OurDbcontext db = new OurDbcontext())
             {
+              System.IO.File.WriteAllText(@"C:\usuario.json","[" + Session["ARCHIVOJSON"].ToString() + "]");
+               
                 return View(db.userAccount.ToList());
-            }
-        }
 
+            }
+       
+        }
+      
         public ActionResult Register()
         {
             return View();
@@ -32,10 +38,20 @@ namespace xFlix_Proyecto_01.Controllers
                 {
                     db.userAccount.Add(account);
                     db.SaveChanges();
+                    if (Session["ARCHIVOJSON"].ToString() == string.Empty)
+                    {
+                        Session["ARCHIVOJSON"] = JsonConvert.SerializeObject(db.userAccount);
+                    }
+                    else
+                    {
+                        Session["ARCHIVOJSON"] = Session["ARCHIVOJSON"].ToString() + "," + JsonConvert.SerializeObject(db.userAccount);
+                    }
                 }
                 ModelState.Clear();
                 ViewBag.Message = account.FirstName + " " + account.LastName + " successfully registered.";
             }
+
+           
             return View();
         }
 
