@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -57,7 +59,7 @@ namespace xFlix_Proyecto_01.Controllers
                     Session["Username"] = usr.Username.ToString();
                     return RedirectToAction("LoggedIn");
                 }
-                else if ( usr.Username == "admin")
+                else if (usr.Username == "admin")
                 {
                     Session["UserID"] = usr.UserID.ToString();
                     Session["Username"] = usr.Username.ToString();
@@ -65,7 +67,7 @@ namespace xFlix_Proyecto_01.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("","UserName or Password is wrong.");
+                    ModelState.AddModelError("", "UserName or Password is wrong.");
                 }
             }
             return View();
@@ -93,6 +95,36 @@ namespace xFlix_Proyecto_01.Controllers
             {
                 return RedirectToAction("Login");
             }
+        }
+
+        public ActionResult ImportJson()
+        {
+            TempData["uploadResult"] = "";
+            try
+            {
+                if (Request.Files.Count > 0)
+                {
+                    var file = Request.Files[0];
+
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        var fileName = Path.GetFileName(file.FileName);
+                        var path = Path.Combine(Server.MapPath("~/App_Data/"), fileName);
+                        file.SaveAs(path);
+                        TempData["uploadResult"] = "Archivo subido con éxito";
+
+                        var content = System.IO.File.ReadAllText(path);
+                     // var ImportTreeJson = JsonConvert.DeserializeObject<Dictionary<string, BTree>>(content);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                TempData["uploadResult"] = "Error" + ex.Message;
+
+            }
+            return View("Admin");
         }
 
     }

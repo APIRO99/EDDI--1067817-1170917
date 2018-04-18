@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -183,6 +184,7 @@
     <Content Include="Views\Tree\EliminarAdmin.cshtml" />
     <Content Include="Views\Tree\AgregarUsuario.cshtml" />
     <Content Include="Views\Tree\EliminarUsuario.cshtml" />
+    <Content Include="Views\Account\ImportJson.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
