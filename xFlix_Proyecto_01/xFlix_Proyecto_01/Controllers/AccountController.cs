@@ -21,7 +21,7 @@ namespace xFlix_Proyecto_01.Controllers
                 try
                 {
                     // aqui se envia el archivo .json al disco c
-                     System.IO.File.WriteAllText(@"C:\Users\usuarios.json", "[" + Session["ARCHIVOJSON"].ToString() + "]");
+                     System.IO.File.WriteAllText(@"C:\ussuarios.json", "[" + Session["ARCHIVOJSON"].ToString() + "]");
                      TempData["uploadResult"] = "Archivo guardado en el disco con exito!";
                 }
                 catch (Exception ex)
