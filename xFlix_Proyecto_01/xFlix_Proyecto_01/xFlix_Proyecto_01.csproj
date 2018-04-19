@@ -135,6 +135,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BinaryTree.cs" />
     <Compile Include="Models\OurDbcontext.cs" />
     <Compile Include="Models\UserAccount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -185,6 +186,7 @@
     <Content Include="Views\Tree\AgregarUsuario.cshtml" />
     <Content Include="Views\Tree\EliminarUsuario.cshtml" />
     <Content Include="Views\Account\ImportJson.cshtml" />
+    <Content Include="Views\Account\ImportUserJson.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

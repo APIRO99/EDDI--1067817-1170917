@@ -114,7 +114,7 @@ namespace xFlix_Proyecto_01.Controllers
                         TempData["uploadResult"] = "Archivo subido con éxito";
 
                         var content = System.IO.File.ReadAllText(path);
-                     // var ImportTreeJson = JsonConvert.DeserializeObject<Dictionary<string, BTree>>(content);
+                        var ImportTreeJson = JsonConvert.DeserializeObject<BinaryTree<Movies>>(content);
                     }
                 }
 
@@ -125,7 +125,37 @@ namespace xFlix_Proyecto_01.Controllers
 
             }
             return View("Admin");
-        }
+        }//Tested
+
+        public ActionResult ImportUserJson()
+        {
+            TempData["uploadResult"] = "";
+            try
+            {
+                if (Request.Files.Count > 0)
+                {
+                    var file = Request.Files[0];
+
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        var fileName = Path.GetFileName(file.FileName);
+                        var path = Path.Combine(Server.MapPath("~/App_Data/"), fileName);
+                        file.SaveAs(path);
+                        TempData["uploadResult"] = "Archivo subido con éxito";
+
+                        var content = System.IO.File.ReadAllText(path);
+                     // var ImportUsersJson = JsonConvert.DeserializeObject<Dictionary<string, "InsetarClaseArbolAqui">>(content);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                TempData["uploadResult"] = "Error" + ex.Message;
+
+            }
+            return View("Admin");
+        }//Tested
 
     }
 }
