@@ -14,11 +14,13 @@ namespace xFlix_Proyecto_01.Controllers
         // GET: Account
         public ActionResult Index()
         {
+            //se usa para la base de datos de los usuarios
             using (OurDbcontext db = new OurDbcontext())
             {
                 TempData["uploadResult"] = "";
                 try
                 {
+                    // aqui se envia el archivo .json al disco c
                      System.IO.File.WriteAllText(@"C:\Users\usuarios.json", "[" + Session["ARCHIVOJSON"].ToString() + "]");
                      TempData["uploadResult"] = "Archivo guardado en el disco con exito!";
                 }
@@ -27,7 +29,8 @@ namespace xFlix_Proyecto_01.Controllers
                     TempData["uploadResult"] = "Error" + ex.Message;
 
                 }
-                           
+                           //REtorna la vista
+                        
                 return View(db.userAccount.ToList());
             }
        
@@ -46,8 +49,10 @@ namespace xFlix_Proyecto_01.Controllers
             {
                 using (OurDbcontext db = new OurDbcontext())
                 {
+                    // agrega al usuario  y guarda los cambios en la base de datos
                     db.userAccount.Add(account);
                     db.SaveChanges();
+                    // serealiza el archivo json
                     if (Session["ARCHIVOJSON"].ToString() == string.Empty)
                     {
                         Session["ARCHIVOJSON"] = JsonConvert.SerializeObject(account);
@@ -76,6 +81,7 @@ namespace xFlix_Proyecto_01.Controllers
         {
             using (OurDbcontext db = new OurDbcontext())
             {
+                //verifica el login
                 var usr = db.userAccount.Where(u => u.Username == user.Username && u.Password == user.Password).FirstOrDefault();
                 if (usr != null && usr.Username != "admin")
                 {
@@ -99,6 +105,7 @@ namespace xFlix_Proyecto_01.Controllers
 
         public ActionResult LoggedIn()
         {
+            //returna la vista dependiendo del usuario
             if (Session["Username"] != null)
             {
                 return View();
@@ -111,6 +118,7 @@ namespace xFlix_Proyecto_01.Controllers
 
         public ActionResult Admin()
         {
+            //solo el admin puede usar esta vista
             if (Session["Username"] != null)
             {
                 return View();
