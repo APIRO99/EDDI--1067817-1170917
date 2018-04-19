@@ -16,16 +16,26 @@ namespace xFlix_Proyecto_01.Controllers
         {
             using (OurDbcontext db = new OurDbcontext())
             {
-              System.IO.File.WriteAllText(@"C:\usuario.json","[" + Session["ARCHIVOJSON"].ToString() + "]");
-               
-                return View(db.userAccount.ToList());
+                TempData["uploadResult"] = "";
+                try
+                {
+                     System.IO.File.WriteAllText(@"C:\Users\usuarios.json", "[" + Session["ARCHIVOJSON"].ToString() + "]");
+                     TempData["uploadResult"] = "Archivo guardado en el disco con exito!";
+                }
+                catch (Exception ex)
+                {
+                    TempData["uploadResult"] = "Error" + ex.Message;
 
+                }
+                           
+                return View(db.userAccount.ToList());
             }
        
         }
       
         public ActionResult Register()
         {
+        
             return View();
         }
 
@@ -40,11 +50,11 @@ namespace xFlix_Proyecto_01.Controllers
                     db.SaveChanges();
                     if (Session["ARCHIVOJSON"].ToString() == string.Empty)
                     {
-                        Session["ARCHIVOJSON"] = JsonConvert.SerializeObject(db.userAccount);
+                        Session["ARCHIVOJSON"] = JsonConvert.SerializeObject(account);
                     }
                     else
                     {
-                        Session["ARCHIVOJSON"] = Session["ARCHIVOJSON"].ToString() + "," + JsonConvert.SerializeObject(db.userAccount);
+                        Session["ARCHIVOJSON"] = Session["ARCHIVOJSON"].ToString() + "," + JsonConvert.SerializeObject(account);
                     }
                 }
                 ModelState.Clear();
@@ -73,7 +83,7 @@ namespace xFlix_Proyecto_01.Controllers
                     Session["Username"] = usr.Username.ToString();
                     return RedirectToAction("LoggedIn");
                 }
-                else if ( usr.Username == "admin")
+                else if ( usr.Username == "admin" && usr.Password == "admin")
                 {
                     Session["UserID"] = usr.UserID.ToString();
                     Session["Username"] = usr.Username.ToString();
